@@ -166,11 +166,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Connections\Repository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IndexController.cs" />
-    <Compile Include="Entities\Invoice.cs" />
-    <Compile Include="Entities\Person.cs" />
-    <Compile Include="Entities\Product.cs" />
-    <Compile Include="Entities\Tax.cs" />
+    <Compile Include="Entities\Invoices\Invoice.cs" />
+    <Compile Include="Entities\Invoices\InvoiceRepository.cs" />
+    <Compile Include="Entities\Persons\Person.cs" />
+    <Compile Include="Entities\Persons\PersonRepository.cs" />
+    <Compile Include="Entities\Products\Product.cs" />
+    <Compile Include="Entities\Products\ProductRepository.cs" />
+    <Compile Include="Entities\Taxes\Tax.cs" />
+    <Compile Include="Entities\Taxes\TaxRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,12 +259,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Invoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Index\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

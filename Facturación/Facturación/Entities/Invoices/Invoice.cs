@@ -1,11 +1,9 @@
-﻿using MongoDB.Bson;
+﻿using Facturación.Entities.Persons;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Facturación.Entities
+namespace Facturación.Entities.Invoices
 {
     public sealed class Invoice
     {
@@ -18,16 +16,16 @@ namespace Facturación.Entities
         [BsonElement("Number")]
         public int Number { get; set; }
         [BsonElement("Emmiter")]
-        public Person Emmiter { get; set; }
+        public Persons.Person Emmiter { get; set; }
         [BsonElement("Receiver")]
-        public Person Receiver { get; set; }
+        public Persons.Person Receiver { get; set; }
         [BsonElement("Product")]
-        public Product Product { get; set; }
+        public Products.Product Product { get; set; }
         [BsonElement("Quantity")]
         public int Quantity { get; set; }
         [BsonElement("TotalPrice")]
         public float TotalPrice { get; set; }
         [BsonElement("Tax")]
-        public Tax Tax { get; set; }
+        public Taxes.Tax Tax { get; set; }
     }
 }

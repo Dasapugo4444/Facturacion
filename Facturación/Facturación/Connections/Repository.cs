@@ -1,13 +1,16 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Facturación.Connections
 {
-    public class Repository
+    public class Repository<TEntity>
     {
-        private MongoClient client = new MongoClient();
-        public void Connect ()
+        public MongoClient client;
+        public IMongoDatabase db;
+        public void Connect (string collection)
         {
-            IMongoDatabase facturacion = client.GetDatabase("facturacion");
+            client = new MongoClient();
+            db = client.GetDatabase("facturacion");
         }
 
     }

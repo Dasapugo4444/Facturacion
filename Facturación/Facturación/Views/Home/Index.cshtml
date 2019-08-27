@@ -4,105 +4,108 @@
 <div class="py-5 text-center">
     <h2>Facturación online</h2>
     <p class="lead">Bienvenido, a continuación ingresa los datos que tendrá tu factura.</p>
-    <div class="card bg-dark text-white mb-3">
-        <div class="card-header">
-            Ingresa los datos del vendedor y del cliente
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="mb-3">Datos del vendedor</h4>
-                    <div class="row mb-3">
-                        <div class="col-sm-6">
-                            <label>Nombre</label>
-                            <input type="text" id="sellerFirstName" class="form-control" required />
+    @using (Html.BeginForm())
+    {
+        <div class="card bg-dark text-white mb-3">
+            <div class="card-header">
+                Ingresa los datos del vendedor y del cliente
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mb-3">Datos del vendedor</h4>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label>Nombre</label>
+                                <input type="text" id="sellerFirstName" class="form-control" required />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Apellido</label>
+                                <input type="text" id="sellerSurname" class="form-control" required />
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <label>Apellido</label>
-                            <input type="text" id="sellerSurname" class="form-control" required />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-6">
-                            <label>Identificación</label>
-                            <select id="sellerIdentificationType" class="form-control" required></select>
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Número de identificación</label>
-                            <input type="text" id="sellerIdentificationNumber" class="form-control" required />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <h4 class="mb-3">Datos del cliente</h4>
-                    <div class="row mb-3">
-                        <div class="col-sm-6">
-                            <label>Nombre</label>
-                            <input type="text" id="clientFirstName" class="form-control" required />
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Apellido</label>
-                            <input type="text" id="clientSurname" class="form-control" required />
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label>Identificación</label>
+                                <select id="sellerIdentificationType" class="form-control" required></select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Número de identificación</label>
+                                <input type="text" id="sellerIdentificationNumber" class="form-control" required />
+                            </div>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-6">
-                            <label>Identificación</label>
-                            <select id="clientIdentificationType" class="form-control" required></select>
+                    <div class="col-sm-6">
+                        <h4 class="mb-3">Datos del cliente</h4>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label>Nombre</label>
+                                <input type="text" id="clientFirstName" class="form-control" required />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Apellido</label>
+                                <input type="text" id="clientSurname" class="form-control" required />
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <label>Número de identificación</label>
-                            <input type="text" id="clientIdentificationNumber" class="form-control" required />
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label>Identificación</label>
+                                <select id="clientIdentificationType" class="form-control" required></select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Número de identificación</label>
+                                <input type="text" id="clientIdentificationNumber" class="form-control" required />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="card bg-dark text-white mb-3">
-        <div class="card-header">
-            Ingresa los datos del producto
-        </div>
-        <div class="card-body">
-            <h4 class="mb-3">Producto(s)</h4>
-            <div class="row mb-3">
-                <div class="col-sm-6">
-                    <label>Nombre</label>
-                    <input type="text" id="productName" class="form-control" required />
-                </div>
-                <div class="col-sm-6">
-                    <label>Categoría</label>
-                    <input type="text" id="productCategory" class="form-control" required />
-                </div>
+        <div class="card bg-dark text-white mb-3">
+            <div class="card-header">
+                Ingresa los datos del producto
             </div>
-            <div class="row mb-3">
-                <div class="col-sm-6">
-                    <label>Precio</label>
-                    <input type="number" id="productPrice" class="form-control" required />
+            <div class="card-body">
+                <h4 class="mb-3">Producto(s)</h4>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <label>Nombre</label>
+                        <input type="text" id="productName" class="form-control" required />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Categoría</label>
+                        <input type="text" id="productCategory" class="form-control" required />
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label>Cantidad</label>
-                    <input type="number" id="productQuantity" class="form-control" required />
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <label>Precio</label>
+                        <input type="number" id="productPrice" class="form-control" required />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Cantidad</label>
+                        <input type="number" id="productQuantity" class="form-control" required />
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-sm-6">
-                    <label>Impuesto</label>
-                    <select id="productPrice" class="form-control" required></select>
-                </div>
-                <div class="col-sm-6">
-                    <label>Impuesto</label>
-                    <div class="input-group">
-                        <input type="number" id="productStock" class="form-control" required />
-                        <div class="input-group-append">
-                            <span class="input-group-text">%</span>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <label>Impuesto</label>
+                        <select id="productPrice" class="form-control" required></select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Impuesto</label>
+                        <div class="input-group">
+                            <input type="number" id="productStock" class="form-control" required />
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <button type="submit" id="saveInvoice" class="btn btn-dark btn-block btn-lg">Crear factura</button>
+        <button type="submit" id="saveInvoice" class="btn btn-dark btn-block btn-lg">Crear factura</button>
+    }
 </div>

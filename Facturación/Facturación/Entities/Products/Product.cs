@@ -1,11 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Facturación.Entities
+namespace Facturación.Entities.Products
 {
     public sealed class Product
     {
@@ -20,6 +16,6 @@ namespace Facturación.Entities
         [BsonElement("Stock")]
         public int Stock { get; set; }
         [BsonElement("Tax")]
-        public Tax Tax { get; set; }
+        public Taxes.Tax Tax { get; set; }
     }
 }
