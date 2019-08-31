@@ -1,19 +1,244 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>@ViewBag.Title - Facturación</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Custom fonts for this template-->
+    <link href="Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="Content/css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
-<body class="bg-light">
-    <div class="container">
-        @RenderBody()
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-poo"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Empresa genérica</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Facturación
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-file-invoice-dollar"></i>
+                    <span>Factura</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Facturar:</h6>
+                        <a class="collapse-item" href="~/Views/Invoice/Invoice.cshtml">Factura</a>
+                        @*<a class="collapse-item" href="cards.html">Cards</a>*@
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-cogs"></i>
+                    <span>Configuración</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Configurar:</h6>
+                        <a class="collapse-item" href="utilities-color.html">Personas</a>
+                        <a class="collapse-item" href="utilities-border.html">Productos</a>
+                        <a class="collapse-item" href="utilities-animation.html">Impuestos</a>
+                        <a class="collapse-item" href="utilities-other.html">Formas de pago</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar" aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar:" aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario</span>
+                                <img class="img-profile rounded-circle" src="data:image/png;base64,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">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cerrar sesión
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+
+            </div>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Empresa genérica</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Ya te vas? :(</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">Presiona cerrar sesión para finalizar.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="Content/vendor/jquery/jquery.min.js"></script>
+    <script src="Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="Content/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="Content/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="Content/js/demo/chart-area-demo.js"></script>
+    <script src="Content/js/demo/chart-pie-demo.js"></script>
+
 </body>
+
 </html>

@@ -11,12 +11,10 @@ namespace Facturación.Entities.Invoices
         {
             try
             {
-                Connect("facturacion");
                 var col = db.GetCollection<BsonDocument>("invoice");
-                col.InsertOne(invoice);
-
-
-            } catch (Exception ex)
+                col.InsertOne(invoice.ToBsonDocument());
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("error >>> " + ex.Message);
             }
