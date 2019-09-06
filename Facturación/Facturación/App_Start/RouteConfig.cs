@@ -11,12 +11,16 @@ namespace Facturación
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            //var settings = new FriendlyUrlSettings { AutoRedirectMode = RedirectMode.Off };
+            //routes.EnableFriendlyUrls(settings);
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Account", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Facturacion.Controllers" }
             );
         }
     }
