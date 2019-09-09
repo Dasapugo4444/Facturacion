@@ -1,8 +1,40 @@
-﻿@model Facturación.Entities.Taxes.Tax
+﻿@model IEnumerable<Facturación.Entities.Taxes.Tax>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Impuestos";
 }
 
-<h2>Index</h2>
+<h1 class="h3 mb-2 text-gray-800">Consultar impuestos</h1>
+<p class="mb-4">Aquí puedes ver los impuestos.</p>
+
+<div class="card border-primary shadow mb-4">
+    <div class="card-header py-3">
+        <div class="h4 font-weight-bold text-primary">
+            Impuestos
+            <a href="/Setup/Taxes/Create" style="width:100px" class="float-right text-white btn btn-primary">Crear</a>
+        </div>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="@item.Id">
+                            <td>@Html.Raw(item.Name)</td>
+                            <td>@Html.Raw(item.Percentage)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 

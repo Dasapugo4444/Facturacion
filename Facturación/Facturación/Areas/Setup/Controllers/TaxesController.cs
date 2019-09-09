@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturación.Entities.Taxes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,12 @@ namespace Facturación.Areas.Setup.Controllers
 {
     public class TaxesController : Controller
     {
+        TaxRepository repository = new TaxRepository();
         // GET: Setup/Taxes
         public ActionResult Index()
         {
-            return View();
+            var list = repository.GetAll();
+            return View(list);
         }
 
         // GET: Setup/Taxes/Details/5
@@ -28,12 +31,11 @@ namespace Facturación.Areas.Setup.Controllers
 
         // POST: Setup/Taxes/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Tax tax)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                repository.Insert(tax);
                 return RedirectToAction("Index");
             }
             catch

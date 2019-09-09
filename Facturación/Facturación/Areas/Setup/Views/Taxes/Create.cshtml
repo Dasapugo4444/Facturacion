@@ -1,8 +1,37 @@
 ﻿@model Facturación.Entities.Taxes.Tax
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear impuesto";
 }
 
-<h2>Create</h2>
+<h1 class="h3 mb-2 text-gray-800">Crear impuesto</h1>
+<p class="mb-4">Crea los impuestos que serán asignados a la hora de facturar.</p>
 
+<div class="card border-primary shadow mb-4">
+    <div class="card-header py-3">
+        <div class="h4 font-weight-bold text-primary">
+            Impuestos
+            <a href="/Setup/Taxes/" style="width:100px" class="float-right mx-2 text-white btn btn-primary">Volver</a>
+        </div>
+    </div>
+    @using (Html.BeginForm("Create", "Taxes"))
+    {
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control" name="Name" id="Name" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Porcentaje</label>
+                        <input type="number" class="form-control" name="Percentage" id="Percentage" />
+                    </div>
+                </div>
+            </div>
+            <button style="width:100px" type="submit" class="float-right text-white btn btn-info">Guardar</button>
+        </div>
+    }
+</div>
