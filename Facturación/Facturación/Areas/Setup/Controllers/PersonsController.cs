@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Facturación.Entities.Persons;
 using System.Web.Mvc;
 
-namespace Facturación.Areas.Setup.Persons.Controllers
+namespace Facturación.Areas.Setup.Controllers
 {
     public class PersonsController : Controller
     {
+        PersonRepository repository = new PersonRepository();
         // GET: Setup/Persons
         public ActionResult Index()
         {
-            return View();
+            var list = repository.GetAll();
+            return View(list);
         }
 
         // GET: Setup/Persons/Details/5
@@ -28,13 +27,13 @@ namespace Facturación.Areas.Setup.Persons.Controllers
 
         // POST: Setup/Persons/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Person person)
         {
             try
             {
-                // TODO: Add insert logic here
+                repository.Insert(person);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Persons");
             }
             catch
             {

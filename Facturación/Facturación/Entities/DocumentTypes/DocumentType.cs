@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Facturación.Entities.PaymentTypes
+namespace Facturación.Entities.DocumentTypes
 {
-    public sealed class PaymentType
+    public class DocumentType
     {
         [BsonId]
         public ObjectId Id { get; set; }
-        [BsonElement]
-        public string Code { get; set; }
-        [BsonElement]
+        [BsonElement("Code")]
+        public string Code{ get; set; }
+        [BsonElement("Name")]
         public string Name { get; set; }
     }
 }

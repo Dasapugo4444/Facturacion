@@ -1,31 +1,29 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace Facturación.Entities.Products
+namespace Facturación.Entities.DocumentTypes
 {
-    public class ProductRepository
+    public class DocumentTypeRepository
     {
         private IMongoClient client;
         private IMongoDatabase database;
-        private IMongoCollection<Product> collection;
+        private IMongoCollection<DocumentType> collection;
 
-        public ProductRepository()
+        public DocumentTypeRepository()
         {
             client = new MongoClient();
             database = client.GetDatabase("facturacion");
-            collection = database.GetCollection<Product>("products");
+            collection = database.GetCollection<DocumentType>("documentTypes");
         }
 
-        public void Insert(Product product)
+        public void Insert(DocumentType documentType)
         {
-            collection.InsertOne(product);
+            collection.InsertOne(documentType);
         }
 
-        public List<Product> GetAll()
+        public List<DocumentType> GetAll()
         {
             return collection.Find(new BsonDocument()).ToList();
         }

@@ -10,7 +10,7 @@ namespace Facturación.Connections
         public void Connect (string collection)
         {
             client = new MongoClient();
-            db = client.GetDatabase("facturacion");
+            db = client.GetDatabase(collection);
         }
 
     }

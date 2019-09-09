@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Facturación.Areas.Setup.Products.Controllers
+namespace Facturación.Areas.Setup.Controllers
 {
     public class ProductsController : Controller
     {

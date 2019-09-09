@@ -1,8 +1,48 @@
-﻿@model Facturación.Entities.Persons.Person
+﻿@model IEnumerable<Facturación.Entities.Persons.Person>
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Personas";
 }
 
-<h2>View</h2>
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Consultar personas</h1>
+<p class="mb-4">Aquí puedes ver los clientes.</p>
+
+<!-- DataTales Example -->
+<div class="card border-primary shadow mb-4">
+    <div class="card-header py-3">
+        <div class="h4 font-weight-bold text-primary">
+            Personas
+            <a href="/Setup/Persons/Create" style="width:100px" class="float-right text-white btn btn-primary">Crear</a>
+        </div>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo de persona</th>
+                        <th>Tipo de identificación</th>
+                        <th>Número de identificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.Raw(item.FirstName)</td>
+                            <td>@Html.Raw(item.SurName)</td>
+                            <td>@Html.Raw(item.PersonType)</td>
+                            <td>@Html.Raw(item.IdentificationType)</td>
+                            <td>@Html.Raw(item.IdentificationNumber)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 

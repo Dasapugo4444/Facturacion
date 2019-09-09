@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Facturación.Entities.PaymentTypes;
 using System.Web.Mvc;
 
-namespace Facturación.Areas.Setup.PaymentTypes.Controllers
+namespace Facturación.Areas.Setup.Controllers
 {
     public class PaymentTypesController : Controller
     {
+        PaymentTypeRepository repository = new PaymentTypeRepository();
+
         // GET: Setup/PaymentTypes
         public ActionResult Index()
         {
-            return View();
+            var list = repository.GetAll();
+            return View(list);
         }
 
         // GET: Setup/PaymentTypes/Details/5
@@ -28,13 +28,12 @@ namespace Facturación.Areas.Setup.PaymentTypes.Controllers
 
         // POST: Setup/PaymentTypes/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(PaymentType paymentType)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                repository.Insert(paymentType);
+                return RedirectToAction("Index","PaymentTypes");
             }
             catch
             {

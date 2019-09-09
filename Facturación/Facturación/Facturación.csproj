@@ -178,6 +178,7 @@
     <Compile Include="Entities\Invoices\Invoice.cs" />
     <Compile Include="Entities\Invoices\InvoiceRepository.cs" />
     <Compile Include="Entities\PaymentTypes\PaymentType.cs" />
+    <Compile Include="Entities\PaymentTypes\PaymentTypeRepository.cs" />
     <Compile Include="Entities\Persons\Person.cs" />
     <Compile Include="Entities\Persons\PersonRepository.cs" />
     <Compile Include="Entities\Products\Product.cs" />
@@ -1951,9 +1952,6 @@
     <Content Include="Content\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\vendor\jquery\jquery.min.map" />
     <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="Areas\Setup\Views\PaymentTypes\Index.cshtml" />
-    <Content Include="Areas\Setup\Views\Web.config" />
-    <Content Include="Areas\Setup\Views\_ViewStart.cshtml" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -1962,17 +1960,20 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Areas\Setup\Views\PaymentTypes\Edit.cshtml" />
+    <Content Include="Areas\Setup\Views\web.config" />
+    <Content Include="Areas\Setup\Views\PaymentTypes\Index.cshtml" />
     <Content Include="Areas\Setup\Views\PaymentTypes\Create.cshtml" />
+    <Content Include="Areas\Setup\Views\PaymentTypes\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\Persons\Index.cshtml" />
-    <Content Include="Areas\Setup\Views\Persons\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\Persons\Create.cshtml" />
+    <Content Include="Areas\Setup\Views\Persons\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\Products\Index.cshtml" />
-    <Content Include="Areas\Setup\Views\Products\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Setup\Views\Products\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\Taxes\Index.cshtml" />
-    <Content Include="Areas\Setup\Views\Taxes\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\Taxes\Create.cshtml" />
+    <Content Include="Areas\Setup\Views\Taxes\Edit.cshtml" />
+    <Content Include="Areas\Setup\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2006,7 +2007,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Areas\Invoice\Views\Default\Invoice.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -2020,7 +2020,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Invoice\Controllers\" />
+    <Folder Include="Areas\Setup\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

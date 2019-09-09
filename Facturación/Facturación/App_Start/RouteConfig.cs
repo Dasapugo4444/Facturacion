@@ -11,8 +11,6 @@ namespace Facturación
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            //var settings = new FriendlyUrlSettings { AutoRedirectMode = RedirectMode.Off };
-            //routes.EnableFriendlyUrls(settings);
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 

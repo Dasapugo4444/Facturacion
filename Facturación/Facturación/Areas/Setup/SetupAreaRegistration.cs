@@ -1,18 +1,23 @@
 ﻿using System.Web.Mvc;
 
-namespace Facturacion.Areas.Setup
+namespace Facturación.Areas.Setup
 {
-    public class SetupAreaRegistration : AreaRegistration
+    public class SetupAreaRegistration : AreaRegistration 
     {
-        public override string AreaName => "Setup";
-
-        public override void RegisterArea(AreaRegistrationContext context)
+        public override string AreaName 
         {
+            get 
+            {
+                return "Setup";
+            }
+        }
 
+        public override void RegisterArea(AreaRegistrationContext context) 
+        {
             context.MapRoute(
-                "Setup_Default",
+                "Setup_default",
                 "Setup/{controller}/{action}/{id}",
-                new { controller = "Default", action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional }
             );
         }
     }

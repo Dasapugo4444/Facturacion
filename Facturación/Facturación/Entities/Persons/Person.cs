@@ -12,7 +12,7 @@ namespace Facturación.Entities.Persons
         [BsonElement("FirstName")]
         public string FirstName { get; set; }
         [BsonElement("Surname")]
-        public string Surname { get; set; }
+        public string SurName { get; set; }
         [BsonElement("IdentificationType")]
         public string IdentificationType { get; set; }
         [BsonElement("IdentificationNumber")]
