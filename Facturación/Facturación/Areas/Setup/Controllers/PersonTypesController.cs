@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Facturación.Entities.PersonTypes;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
 {
     public class PersonTypesController : Controller
     {
+        PersonTypeRepository repository = new PersonTypeRepository();
         // GET: Setup/PersonTypes
         public ActionResult Index()
         {
-            return View();
+            var list = repository.GetAll();
+            return View(list);
         }
 
         // GET: Setup/PersonTypes/Details/5
@@ -28,11 +27,11 @@ namespace Facturación.Areas.Setup.Controllers
 
         // POST: Setup/PersonTypes/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(PersonType personType)
         {
             try
             {
-                // TODO: Add insert logic here
+                repository.Insert(personType);
 
                 return RedirectToAction("Index");
             }
