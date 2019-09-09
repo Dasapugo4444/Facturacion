@@ -1,39 +1,39 @@
 ﻿@model IEnumerable<Facturación.Entities.DocumentTypes.DocumentType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tipos de documentos";
 }
 
-<h2>Index</h2>
+<h1 class="h3 mb-2 text-gray-800">Consultar tipos de documentos</h1>
+<p class="mb-4">Aquí puedes ver las tipos de documentos para la identificación de las personas.</p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
+<div class="card border-primary shadow mb-4">
+    <div class="card-header py-3">
+        <div class="h4 font-weight-bold text-primary">
+            Tipos de documentos
+            <a href="/Setup/DocumentTypes/Create" style="width:100px" class="float-right text-white btn btn-primary">Crear</a>
+        </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="@item.Id">
+                            <td>@Html.Raw(item.Code)</td>
+                            <td>@Html.Raw(item.Name)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

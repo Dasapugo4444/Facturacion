@@ -1980,12 +1980,12 @@
     <Content Include="Areas\Setup\Views\Taxes\Create.cshtml" />
     <Content Include="Areas\Setup\Views\Taxes\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Setup\Views\DocumentTypes\Index.cshtml" />
     <Content Include="Areas\Setup\Views\DocumentTypes\Create.cshtml" />
     <Content Include="Areas\Setup\Views\DocumentTypes\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\PersonTypes\Index.cshtml" />
     <Content Include="Areas\Setup\Views\PersonTypes\Create.cshtml" />
     <Content Include="Areas\Setup\Views\PersonTypes\Edit.cshtml" />
+    <Content Include="Areas\Setup\Views\DocumentTypes\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2032,7 +2032,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Setup\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

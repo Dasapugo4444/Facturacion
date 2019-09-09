@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturación.Entities.DocumentTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,12 @@ namespace Facturación.Areas.Setup.Controllers
 {
     public class DocumentTypesController : Controller
     {
+        DocumentTypeRepository repository = new DocumentTypeRepository();
         // GET: Setup/DocumentTypes
         public ActionResult Index()
         {
-            return View();
+            var list = repository.GetAll();
+            return View(list);
         }
 
         // GET: Setup/DocumentTypes/Details/5
@@ -28,11 +31,11 @@ namespace Facturación.Areas.Setup.Controllers
 
         // POST: Setup/DocumentTypes/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(DocumentType documentType)
         {
             try
             {
-                // TODO: Add insert logic here
+                repository.Insert(documentType);
 
                 return RedirectToAction("Index");
             }
