@@ -23,9 +23,26 @@ namespace Facturación.Entities.DocumentTypes
             collection.InsertOne(documentType);
         }
 
+        public void Update(ObjectId id, BsonDocument newDocument)
+        {
+            var filter = Builders<DocumentType>.Filter.Eq("_id", id);
+            var item = Builders<DocumentType>.Update.Set("Code", newDocument.GetValue("code")).Set("Name", newDocument.GetValue("name"));
+            var update = collection.FindOneAndUpdate(filter, item);
+        }
+
         public List<DocumentType> GetAll()
         {
             return collection.Find(new BsonDocument()).ToList();
+        }
+
+        public DocumentType Get(ObjectId id)
+        {
+            return collection.Find<DocumentType>(dt => dt.Id == id).FirstOrDefault();
+        }
+
+        public void Delete(ObjectId id)
+        {
+            collection.FindOneAndDelete(Builders<DocumentType>.Filter.Eq("_id", id));
         }
     }
 }

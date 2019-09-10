@@ -1,8 +1,6 @@
 ﻿using Facturación.Entities.DocumentTypes;
+using MongoDB.Bson;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
@@ -15,12 +13,6 @@ namespace Facturación.Areas.Setup.Controllers
         {
             var list = repository.GetAll();
             return View(list);
-        }
-
-        // GET: Setup/DocumentTypes/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         // GET: Setup/DocumentTypes/Create
@@ -45,41 +37,42 @@ namespace Facturación.Areas.Setup.Controllers
             }
         }
 
-        // GET: Setup/DocumentTypes/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            var objectId = ObjectId.Parse(id);
+
+            var documentType = repository.Get(objectId);
+            return View(documentType);
         }
 
         // POST: Setup/DocumentTypes/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, string code, string name)
         {
             try
             {
-                // TODO: Add update logic here
-
+                var objectId = ObjectId.Parse(id);
+                var doc = new BsonDocument {
+                    { "code", code },
+                    { "name", name }
+                };
+                repository.Update(objectId, doc);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                Console.WriteLine(ex.Message);
+                return null;
             }
         }
 
         // GET: Setup/DocumentTypes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/DocumentTypes/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id)
         {
             try
             {
-                // TODO: Add delete logic here
+                var objectId = ObjectId.Parse(id);
+                repository.Delete(objectId);
 
                 return RedirectToAction("Index");
             }
@@ -88,5 +81,6 @@ namespace Facturación.Areas.Setup.Controllers
                 return View();
             }
         }
+
     }
 }

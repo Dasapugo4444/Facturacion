@@ -173,6 +173,7 @@
     <Compile Include="Areas\Setup\Controllers\PersonTypesController.cs" />
     <Compile Include="Areas\Setup\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Setup\Controllers\TaxesController.cs" />
+    <Compile Include="Areas\Setup\Models\PersonTypeModel.cs" />
     <Compile Include="Areas\Setup\SetupAreaRegistration.cs" />
     <Compile Include="Connections\Repository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
