@@ -1,31 +1,31 @@
 ﻿using Facturación.Entities.PersonTypes;
+using MongoDB.Bson;
+using System;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
 {
     public class PersonTypesController : Controller
     {
-        PersonTypeRepository repository = new PersonTypeRepository();
-        // GET: Setup/PersonTypes
+        readonly PersonTypeRepository repository = new PersonTypeRepository();
         public ActionResult Index()
         {
-            var list = repository.GetAll();
-            return View(list);
+            try
+            {
+                var list = repository.GetAll();
+                return View(list);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: Setup/PersonTypes/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Setup/PersonTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Setup/PersonTypes/Create
         [HttpPost]
         public ActionResult Create(PersonType personType)
         {
@@ -41,42 +41,47 @@ namespace Facturación.Areas.Setup.Controllers
             }
         }
 
-        // GET: Setup/PersonTypes/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/PersonTypes/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                var objectId = ObjectId.Parse(id);
+                var personType = repository.Get(objectId);
+                return View(personType);
             }
             catch
             {
-                return View();
+                return null;
             }
         }
 
-        // GET: Setup/PersonTypes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/PersonTypes/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Edit(string id, string code, string name)
         {
             try
             {
-                // TODO: Add delete logic here
+                var objectId = ObjectId.Parse(id);
+                var doc = new BsonDocument
+                {
+                    { "code", code },
+                    { "name", name }
+                };
+                repository.Update(objectId, doc);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
 
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                var objectId = ObjectId.Parse(id);
+                repository.Delete(objectId);
                 return RedirectToAction("Index");
             }
             catch

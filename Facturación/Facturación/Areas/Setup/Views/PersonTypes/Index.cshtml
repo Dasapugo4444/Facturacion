@@ -22,15 +22,32 @@
                     <tr>
                         <th>Código</th>
                         <th>Nombre</th>
-                    </tr>
+                        <th style="width:110px"></th>
+                        <th style="width:110px"></th>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr id="@item.Id">
-                            <td>@Html.Raw(item.Code)</td>
-                            <td>@Html.Raw(item.Name)</td>
-                        </tr>
+                    <tr id="@item.Id">
+                        <td>@Html.Raw(item.Code)</td>
+                        <td>@Html.Raw(item.Name)</td>
+                        <td style="width:110px">
+                            <a href="~/Setup/PersonTypes/Edit/@item.Id" class="btn btn-primary btn-icon-split btn-sm">
+                                <span class="icon text-white-50">
+                                    <i class="mt-1 fas fa-pencil-alt"></i>
+                                </span>
+                                <span class="text text-white">Editar</span>
+                            </a>
+                        </td>
+                        <td style="width:110px">
+                            <a href="~/Setup/PersonTypes/Delete/@item.Id" return false" class="btn btn-danger btn-icon-split btn-sm">
+                                <span class="icon text-white-50">
+                                    <i class="mt-1 fas fa-eraser"></i>
+                                </span>
+                                <span class="text text-white">Eliminar</span>
+                            </a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

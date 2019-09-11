@@ -8,20 +8,24 @@ namespace Facturación.Areas.Setup.Controllers
     public class DocumentTypesController : Controller
     {
         DocumentTypeRepository repository = new DocumentTypeRepository();
-        // GET: Setup/DocumentTypes
         public ActionResult Index()
         {
-            var list = repository.GetAll();
-            return View(list);
+            try
+            {
+                var list = repository.GetAll();
+                return View(list);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: Setup/DocumentTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Setup/DocumentTypes/Create
         [HttpPost]
         public ActionResult Create(DocumentType documentType)
         {
@@ -39,13 +43,18 @@ namespace Facturación.Areas.Setup.Controllers
 
         public ActionResult Edit(string id)
         {
+            try
+            {
             var objectId = ObjectId.Parse(id);
-
             var documentType = repository.Get(objectId);
             return View(documentType);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // POST: Setup/DocumentTypes/Edit/5
         [HttpPost]
         public ActionResult Edit(string id, string code, string name)
         {
@@ -59,21 +68,18 @@ namespace Facturación.Areas.Setup.Controllers
                 repository.Update(objectId, doc);
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine(ex.Message);
                 return null;
             }
         }
 
-        // GET: Setup/DocumentTypes/Delete/5
         public ActionResult Delete(string id)
         {
             try
             {
                 var objectId = ObjectId.Parse(id);
                 repository.Delete(objectId);
-
                 return RedirectToAction("Index");
             }
             catch
@@ -81,6 +87,5 @@ namespace Facturación.Areas.Setup.Controllers
                 return View();
             }
         }
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model Facturación.Entities.DocumentTypes.DocumentType
 
 @{
-    ViewBag.Title = "Crear tipo de documento";
+    ViewBag.Title = "Editar tipo de documento";
 }
 
 <h1 class="h3 mb-2 text-gray-800">Editar tipo de documento</h1>
@@ -22,13 +22,13 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Código</label>
-                        <input class="form-control" name="Code" id="Code" value="@Model.Code" />
+                        <input class="form-control" name="Code" id="Code" value="@Model.Code" required />
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input class="form-control" name="Name" id="Name" value="@Model.Name" />
+                        <input class="form-control" name="Name" id="Name" value="@Model.Name" required />
                     </div>
                 </div>
             </div>
