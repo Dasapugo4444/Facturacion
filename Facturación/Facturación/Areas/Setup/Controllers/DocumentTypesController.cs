@@ -7,7 +7,7 @@ namespace Facturación.Areas.Setup.Controllers
 {
     public class DocumentTypesController : Controller
     {
-        DocumentTypeRepository repository = new DocumentTypeRepository();
+        readonly DocumentTypeRepository repository = new DocumentTypeRepository();
         public ActionResult Index()
         {
             try
@@ -45,9 +45,9 @@ namespace Facturación.Areas.Setup.Controllers
         {
             try
             {
-            var objectId = ObjectId.Parse(id);
-            var documentType = repository.Get(objectId);
-            return View(documentType);
+                var objectId = ObjectId.Parse(id);
+                var documentType = repository.Get(objectId);
+                return View(documentType);
             }
             catch
             {

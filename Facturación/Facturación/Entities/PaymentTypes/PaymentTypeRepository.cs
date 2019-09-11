@@ -6,9 +6,9 @@ namespace Facturación.Entities.PaymentTypes
 {
     public class PaymentTypeRepository
     {
-        private IMongoClient client;
-        private IMongoDatabase database;
-        private IMongoCollection<PaymentType> collection;
+        private readonly IMongoClient client;
+        private readonly IMongoDatabase database;
+        private readonly IMongoCollection<PaymentType> collection;
 
         public PaymentTypeRepository()
         {
@@ -22,9 +22,25 @@ namespace Facturación.Entities.PaymentTypes
             collection.InsertOne(paymentType);
         }
 
+        public void Update(ObjectId id, BsonDocument newDocument)
+        {
+            var filter = Builders<PaymentType>.Filter.Eq("_id", id);
+            var item = Builders<PaymentType>.Update.Set("Code", newDocument.GetValue("code")).Set("Name", newDocument.GetValue("name"));
+            _ = collection.FindOneAndUpdate(filter, item);
+        }
+
+        public void Delete(ObjectId id)
+        {
+            collection.FindOneAndDelete(Builders<PaymentType>.Filter.Eq("_id", id));
+        }
         public List<PaymentType> GetAll()
         {
             return collection.Find(new BsonDocument()).ToList();
+        }
+
+        public PaymentType Get(ObjectId id)
+        {
+            return collection.Find<PaymentType>(pt => pt.Id == id).FirstOrDefault();
         }
     }
 }

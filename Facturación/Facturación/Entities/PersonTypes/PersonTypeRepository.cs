@@ -7,9 +7,9 @@ namespace Facturación.Entities.PersonTypes
 {
     public class PersonTypeRepository
     {
-        private IMongoClient client;
-        private IMongoDatabase database;
-        private IMongoCollection<PersonType> collection;
+        private readonly IMongoClient client;
+        private readonly IMongoDatabase database;
+        private readonly IMongoCollection<PersonType> collection;
 
         public PersonTypeRepository()
         {
@@ -25,7 +25,7 @@ namespace Facturación.Entities.PersonTypes
         {
             var filter = Builders<PersonType>.Filter.Eq("_id", id);
             var item = Builders<PersonType>.Update.Set("Code", newDocument.GetValue("code")).Set("Name", newDocument.GetValue("name"));
-            var update = collection.FindOneAndUpdate(filter, item);
+            _ = collection.FindOneAndUpdate(filter, item);
         }
         public void Delete(ObjectId id)
         {

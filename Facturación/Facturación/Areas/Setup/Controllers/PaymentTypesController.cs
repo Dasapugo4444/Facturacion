@@ -1,39 +1,37 @@
 ﻿using Facturación.Entities.PaymentTypes;
+using MongoDB.Bson;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
 {
     public class PaymentTypesController : Controller
     {
-        PaymentTypeRepository repository = new PaymentTypeRepository();
-
-        // GET: Setup/PaymentTypes
+        readonly PaymentTypeRepository repository = new PaymentTypeRepository();
         public ActionResult Index()
         {
-            var list = repository.GetAll();
-            return View(list);
+            try
+            {
+                var list = repository.GetAll();
+                return View(list);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: Setup/PaymentTypes/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Setup/PaymentTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Setup/PaymentTypes/Create
         [HttpPost]
         public ActionResult Create(PaymentType paymentType)
         {
             try
             {
                 repository.Insert(paymentType);
-                return RedirectToAction("Index","PaymentTypes");
+                return RedirectToAction("Index", "PaymentTypes");
             }
             catch
             {
@@ -41,42 +39,46 @@ namespace Facturación.Areas.Setup.Controllers
             }
         }
 
-        // GET: Setup/PaymentTypes/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/PaymentTypes/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id)
         {
             try
             {
-                // TODO: Add update logic here
+                var objectId = ObjectId.Parse(id);
+                var paymentType = repository.Get(objectId);
+                return View(paymentType);
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
+        [HttpPost]
+        public ActionResult Edit(string id, string code, string name)
+        {
+            try
+            {
+                var objectId = ObjectId.Parse(id);
+                var doc = new BsonDocument
+                {
+                    { "code", code },
+                    { "name", name }
+                };
+                repository.Update(objectId, doc);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return null;
             }
         }
 
-        // GET: Setup/PaymentTypes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/PaymentTypes/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var objectId = ObjectId.Parse(id);
+                repository.Delete(objectId);
                 return RedirectToAction("Index");
             }
             catch
