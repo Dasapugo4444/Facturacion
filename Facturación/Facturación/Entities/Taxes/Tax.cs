@@ -7,6 +7,8 @@ namespace Facturación.Entities.Taxes
     {
         [BsonId]
         public ObjectId Id { get; set; }
+        [BsonElement("Code")]
+        public string Code { get; set; }
         [BsonElement("Name")]
         public string Name { get; set; }
         [BsonElement("Percentage")]

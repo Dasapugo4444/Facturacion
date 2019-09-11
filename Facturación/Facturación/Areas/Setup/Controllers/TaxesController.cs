@@ -1,35 +1,24 @@
 ﻿using Facturación.Entities.Taxes;
+using MongoDB.Bson;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
 {
     public class TaxesController : Controller
     {
-        TaxRepository repository = new TaxRepository();
-        // GET: Setup/Taxes
+        readonly TaxRepository repository = new TaxRepository();
         public ActionResult Index()
         {
             var list = repository.GetAll();
             return View(list);
         }
 
-        // GET: Setup/Taxes/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Setup/Taxes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Setup/Taxes/Create
         [HttpPost]
         public ActionResult Create(Tax tax)
         {
@@ -44,42 +33,48 @@ namespace Facturación.Areas.Setup.Controllers
             }
         }
 
-        // GET: Setup/Taxes/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/Taxes/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                var objectId = ObjectId.Parse(id);
+                var tax = repository.Get(objectId);
+                return View(tax);
             }
             catch
             {
-                return View();
+                return null;
             }
         }
 
-        // GET: Setup/Taxes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/Taxes/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Edit(string id, string code, string name, float percentage)
         {
             try
             {
-                // TODO: Add delete logic here
+                var objectId = ObjectId.Parse(id);
+                var doc = new BsonDocument
+                {
+                    { "code", code },
+                    { "name", name },
+                    { "percentage", percentage }
+                };
+                repository.Update(objectId, doc);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                return null;
+            }
+        }
 
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                var objectId = ObjectId.Parse(id);
+                repository.Delete(objectId);
                 return RedirectToAction("Index");
             }
             catch

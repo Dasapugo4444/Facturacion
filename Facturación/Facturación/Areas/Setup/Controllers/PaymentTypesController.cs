@@ -49,7 +49,7 @@ namespace Facturación.Areas.Setup.Controllers
             }
             catch
             {
-                return View();
+                return null;
             }
         }
 

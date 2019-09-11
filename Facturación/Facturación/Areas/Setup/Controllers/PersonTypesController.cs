@@ -1,6 +1,5 @@
 ﻿using Facturación.Entities.PersonTypes;
 using MongoDB.Bson;
-using System;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
@@ -69,9 +68,8 @@ namespace Facturación.Areas.Setup.Controllers
                 repository.Update(objectId, doc);
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine(ex.Message);
                 return null;
             }
         }

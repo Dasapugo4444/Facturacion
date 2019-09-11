@@ -1,6 +1,5 @@
 ﻿using Facturación.Entities.DocumentTypes;
 using MongoDB.Bson;
-using System;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
@@ -51,7 +50,7 @@ namespace Facturación.Areas.Setup.Controllers
             }
             catch
             {
-                return View();
+                return null;
             }
         }
 

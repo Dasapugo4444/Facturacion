@@ -22,11 +22,11 @@ namespace Facturación.Entities.PaymentTypes
             collection.InsertOne(paymentType);
         }
 
-        public void Update(ObjectId id, BsonDocument newDocument)
+        public void Update(ObjectId id, BsonDocument doc)
         {
             var filter = Builders<PaymentType>.Filter.Eq("_id", id);
-            var item = Builders<PaymentType>.Update.Set("Code", newDocument.GetValue("code")).Set("Name", newDocument.GetValue("name"));
-            _ = collection.FindOneAndUpdate(filter, item);
+            var item = Builders<PaymentType>.Update.Set("Code", doc.GetValue("code")).Set("Name", doc.GetValue("name"));
+            collection.FindOneAndUpdate(filter, item);
         }
 
         public void Delete(ObjectId id)
