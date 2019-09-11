@@ -1,8 +1,62 @@
 ﻿@model Facturación.Entities.Persons.Person
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar persona";
 }
 
-<h2>Edit</h2>
+<h1 class="h3 mb-2 text-gray-800">Editar persona</h1>
+<p class="mb-4">Cambia los datos de la persona seleccionada.</p>
 
+<div class="card border-primary shadow mb-4">
+    <div class="card-header py-3">
+        <div class="h4 font-weight-bold text-primary">
+            Personas
+            <a href="/Setup/Persons/" style="width:100px" class="float-right mx-2 text-white btn btn-primary">Volver</a>
+        </div>
+    </div>
+    @using (Html.BeginForm("Edit", "Persons"))
+    {
+        @Html.Hidden("id", Model.Id)
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Tipo de persona</label>
+                        <input class="form-control" name="PersonType" id="PersonType" value="@Model.PersonType" required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control" name="FirstName" id="FirstName" value="@Model.FirstName" required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input class="form-control" name="SurName" id="SurName" value="@Model.SurName" required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Tipo de identificación</label>
+                        <input class="form-control" name="IdentificationType" id="IdentificationType" value="@Model.IdentificationType" required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Número de identificación</label>
+                        <input class="form-control" name="IdentificationNumber" id="IdentificationNumber" value="@Model.IdentificationNumber" required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input class="form-control" name="Phone" id="Phone" value="@Model.Phone" required />
+                    </div>
+                </div>
+            </div>
+            <button style="width:100px" type="submit" class="float-right text-white btn btn-info">Guardar</button>
+        </div>
+    }
+</div>

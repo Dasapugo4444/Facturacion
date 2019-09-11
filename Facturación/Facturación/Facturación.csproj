@@ -167,6 +167,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Setup\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Setup\Controllers\DocumentTypesController.cs" />
     <Compile Include="Areas\Setup\Controllers\PaymentTypesController.cs" />
     <Compile Include="Areas\Setup\Controllers\PersonsController.cs" />
@@ -184,10 +185,13 @@
     <Compile Include="Entities\Invoices\InvoiceRepository.cs" />
     <Compile Include="Entities\PaymentTypes\PaymentType.cs" />
     <Compile Include="Entities\PaymentTypes\PaymentTypeRepository.cs" />
+    <Compile Include="Entities\Persons\DocumentTyperepository.cs" />
     <Compile Include="Entities\Persons\Person.cs" />
     <Compile Include="Entities\Persons\PersonRepository.cs" />
     <Compile Include="Entities\PersonTypes\PersonType.cs" />
     <Compile Include="Entities\PersonTypes\PersonTypeRepository.cs" />
+    <Compile Include="Entities\ProductCategories\Category.cs" />
+    <Compile Include="Entities\ProductCategories\CategoryRepository.cs" />
     <Compile Include="Entities\Products\Product.cs" />
     <Compile Include="Entities\Products\ProductRepository.cs" />
     <Compile Include="Entities\Taxes\Tax.cs" />
@@ -1987,6 +1991,9 @@
     <Content Include="Areas\Setup\Views\PersonTypes\Create.cshtml" />
     <Content Include="Areas\Setup\Views\PersonTypes\Edit.cshtml" />
     <Content Include="Areas\Setup\Views\DocumentTypes\Index.cshtml" />
+    <Content Include="Areas\Setup\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Setup\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Setup\Views\Categories\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

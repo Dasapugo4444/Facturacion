@@ -1,16 +1,16 @@
-﻿using Facturación.Entities.DocumentTypes;
-using Facturación.Entities.Persons;
+﻿using Facturación.Entities.ProductCategories;
 using MongoDB.Bson;
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
 {
-    public class PersonsController : Controller
+    public class CategoriesController : Controller
     {
-        readonly PersonRepository repository = new PersonRepository();
+        readonly CategoryRepository repository = new CategoryRepository();
         public ActionResult Index()
         {
             try
@@ -30,11 +30,12 @@ namespace Facturación.Areas.Setup.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Person person)
+        public ActionResult Create(Category Category)
         {
             try
             {
-                repository.Insert(person);
+                repository.Insert(Category);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -48,8 +49,8 @@ namespace Facturación.Areas.Setup.Controllers
             try
             {
                 var objectId = ObjectId.Parse(id);
-                var person = repository.Get(objectId);
-                return View(person);
+                var Category = repository.Get(objectId);
+                return View(Category);
             }
             catch
             {
@@ -58,26 +59,21 @@ namespace Facturación.Areas.Setup.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(string id, string personType, string firstName, string surName, string identificationType, string identificationNumber, int phone)
+        public ActionResult Edit(string id, string code, string name)
         {
             try
             {
                 var objectId = ObjectId.Parse(id);
-                var doc = new BsonDocument
-                {
-                    { "personType", personType },
-                    { "firstName", firstName },
-                    { "surName", surName },
-                    { "identificationType", identificationType },
-                    { "identificationNumber", identificationNumber },
-                    { "phone", phone }
+                var doc = new BsonDocument {
+                    { "code", code },
+                    { "name", name }
                 };
                 repository.Update(objectId, doc);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return null;
             }
         }
 

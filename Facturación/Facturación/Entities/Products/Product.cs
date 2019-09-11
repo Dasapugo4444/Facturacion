@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Facturación.Entities.Taxes;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Facturación.Entities.Products
@@ -16,6 +17,6 @@ namespace Facturación.Entities.Products
         [BsonElement("Stock")]
         public int Stock { get; set; }
         [BsonElement("Tax")]
-        public Taxes.Tax Tax { get; set; }
+        public Tax Tax { get; set; }
     }
 }

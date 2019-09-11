@@ -1,0 +1,38 @@
+﻿@model Facturación.Entities.ProductCategories.Category
+
+@{
+    ViewBag.Title = "Editar categoría";
+}
+
+<h1 class="h3 mb-2 text-gray-800">Editar categoría</h1>
+<p class="mb-4">Cambia los datos de las categorías de productos.</p>
+
+<div class="card border-primary shadow mb-4">
+    <div class="card-header py-3">
+        <div class="h4 font-weight-bold text-primary">
+            Categorías
+            <a href="/Setup/Categories/" style="width:100px" class="float-right mx-2 text-white btn btn-primary">Volver</a>
+        </div>
+    </div>
+    @using (Html.BeginForm("Edit", "Categories"))
+    {
+        @Html.Hidden("id", Model.Id)
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Código</label>
+                        <input class="form-control" name="Code" id="Code" value="@Model.Code" required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control" name="Name" id="Name" value="@Model.Name" required />
+                    </div>
+                </div>
+            </div>
+            <button style="width:100px" type="submit" class="float-right text-white btn btn-info">Guardar</button>
+        </div>
+    }
+</div>

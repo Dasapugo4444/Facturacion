@@ -7,9 +7,9 @@ namespace Facturación.Entities.Persons
 {
     public class PersonRepository
     {
-        private IMongoClient client;
-        private IMongoDatabase database;
-        private IMongoCollection<Person> collection;
+        private readonly IMongoClient client;
+        private readonly IMongoDatabase database;
+        private readonly IMongoCollection<Person> collection;
 
         public PersonRepository()
         {
@@ -23,9 +23,31 @@ namespace Facturación.Entities.Persons
             collection.InsertOne(person);
         }
 
+        public void Update(ObjectId id, BsonDocument doc)
+        {
+            var filter = Builders<Person>.Filter.Eq("_id", id);
+            var item = Builders<Person>.Update
+                .Set("PersonType", doc.GetValue("personType"))
+                .Set("FirstName", doc.GetValue("firstName"))
+                .Set("SurName", doc.GetValue("surName"))
+                .Set("IdentificationType", doc.GetValue("identificationType"))
+                .Set("IdentificationNumber", doc.GetValue("identificationNumber"))
+                .Set("Phone", doc.GetValue("phone"));
+            collection.FindOneAndUpdate(filter, item);
+        }
+
+        public void Delete(ObjectId id)
+        {
+            collection.FindOneAndDelete(Builders<Person>.Filter.Eq("_id", id));
+        }
         public List<Person> GetAll()
         {
             return collection.Find(new BsonDocument()).ToList();
+        }
+
+        public Person Get(ObjectId id)
+        {
+            return collection.Find<Person>(p => p.Id == id).FirstOrDefault();
         }
     }
 }

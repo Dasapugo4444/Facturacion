@@ -1,15 +1,15 @@
 ﻿@model Facturación.Entities.Persons.Person
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear persona";
 }
 
-<h1 class="h3 mb-2 text-gray-800">Crear personas</h1>
+<h1 class="h3 mb-2 text-gray-800">Crear persona</h1>
 <p class="mb-4">Crea las personas que serán vendedores o clientes.</p>
 
 <div class="card border-primary shadow mb-4">
     <div class="card-header py-3">
         <div class="h4 font-weight-bold text-primary">
-            Formas de pago
+            Personas
             <a href="/Setup/Persons/" style="width:100px" class="float-right mx-2 text-white btn btn-primary">Volver</a>
         </div>
     </div>
@@ -19,32 +19,39 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
+                        <label>Tipo de persona</label>
+                        <input class="form-control" name="PersonType" id="PersonType" required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
                         <label>Nombre</label>
-                        <input class="form-control" name="FirstName" id="FirstName" />
+                        <input class="form-control" name="FirstName" id="FirstName" required />
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Apellido</label>
-                        <input class="form-control" name="SurName" id="SurName" />
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Tipo de persona</label>
-                        @*<select class="form-control" name="PersonType" id="PersonType"></select>*@
+                        <input class="form-control" name="SurName" id="SurName" required />
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Tipo de identificación</label>
-                        @*<select class="form-control" name="IdentificationType" id="IdentificationType"></select>*@
+                        @*<input class="form-control" name="IdentificationType" id="IdentificationType" required />*@
+                        @*@Html.DropDownListFor(dt => dt.Id, ViewBag.documentTypesList as SelectList, new { @class = "form-control"})*@
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Número de identificación</label>
-                        <input class="form-control" name="IdentificationNumber" id="IdentificationNumber" />
+                        <input class="form-control" name="IdentificationNumber" id="IdentificationNumber" required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input class="form-control" name="Phone" id="Phone" required />
                     </div>
                 </div>
             </div>

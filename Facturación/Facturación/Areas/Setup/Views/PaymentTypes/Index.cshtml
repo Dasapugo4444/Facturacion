@@ -30,8 +30,8 @@
                     @foreach (var item in Model)
                     {
                         <tr id="@item.Id">
-                            <td>@Html.Raw(item.Code)</td>
-                            <td>@Html.Raw(item.Name)</td>
+                            <td>@item.Code</td>
+                            <td>@item.Name</td>
                             <td style="width:110px">
                                 <a href="~/Setup/PaymentTypes/Edit/@item.Id" class="btn btn-primary btn-icon-split btn-sm">
                                     <span class="icon text-white-50">

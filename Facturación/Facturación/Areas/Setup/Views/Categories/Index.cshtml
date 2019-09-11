@@ -1,17 +1,17 @@
-﻿@model IEnumerable<Facturación.Entities.PersonTypes.PersonType>
+﻿@model IEnumerable<Facturación.Entities.ProductCategories.Category>
 
 @{
-    ViewBag.Title = "Tipos de personas";
+    ViewBag.Title = "Categorías de producto";
 }
 
-<h1 class="h3 mb-2 text-gray-800">Consultar tipos de personas</h1>
-<p class="mb-4">Aquí puedes ver los tipos de personas que pueden ser asingados a cada persona que crees.</p>
+<h1 class="h3 mb-2 text-gray-800">Consultar categorías</h1>
+<p class="mb-4">Aquí puedes ver las categorías que serán asignadas a tus productos.</p>
 
 <div class="card border-primary shadow mb-4">
     <div class="card-header py-3">
         <div class="h4 font-weight-bold text-primary">
-            Tipos de personas
-            <a href="/Setup/PersonTypes/Create" style="width:100px" class="float-right text-white btn btn-primary">Crear</a>
+            Categorías
+            <a href="/Setup/Categories/Create" style="width:100px" class="float-right text-white btn btn-primary">Crear</a>
         </div>
 
     </div>
@@ -24,15 +24,16 @@
                         <th>Nombre</th>
                         <th style="width:110px"></th>
                         <th style="width:110px"></th>
+                    </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach(var item in Model)
                     {
                     <tr id="@item.Id">
                         <td>@item.Code</td>
                         <td>@item.Name</td>
                         <td style="width:110px">
-                            <a href="~/Setup/PersonTypes/Edit/@item.Id" class="btn btn-primary btn-icon-split btn-sm">
+                            <a href="~/Setup/Categories/Edit/@item.Id" class="btn btn-primary btn-icon-split btn-sm">
                                 <span class="icon text-white-50">
                                     <i class="mt-1 fas fa-pencil-alt"></i>
                                 </span>
@@ -40,7 +41,7 @@
                             </a>
                         </td>
                         <td style="width:110px">
-                            <a href="~/Setup/PersonTypes/Delete/@item.Id" class="btn btn-danger btn-icon-split btn-sm">
+                            <a href="~/Setup/Categories/Delete/@item.Id" class="btn btn-danger btn-icon-split btn-sm">
                                 <span class="icon text-white-50">
                                     <i class="mt-1 fas fa-eraser"></i>
                                 </span>

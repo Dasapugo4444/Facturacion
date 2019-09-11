@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Facturación.Entities.DocumentTypes;
 
 namespace Facturación.Entities.Persons
 {
@@ -11,12 +12,14 @@ namespace Facturación.Entities.Persons
         public string PersonType { get; set; }
         [BsonElement("FirstName")]
         public string FirstName { get; set; }
-        [BsonElement("Surname")]
+        [BsonElement("SurName")]
         public string SurName { get; set; }
         [BsonElement("IdentificationType")]
-        public string IdentificationType { get; set; }
+        public DocumentType IdentificationType { get; set; }
         [BsonElement("IdentificationNumber")]
         public string IdentificationNumber { get; set; }
+        [BsonElement("Phone")]
+        public int Phone { get; set; }
 
     }
 }
