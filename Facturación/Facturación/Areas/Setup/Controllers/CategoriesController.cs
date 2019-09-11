@@ -49,8 +49,8 @@ namespace Facturación.Areas.Setup.Controllers
             try
             {
                 var objectId = ObjectId.Parse(id);
-                var Category = repository.Get(objectId);
-                return View(Category);
+                var category = repository.Get(objectId);
+                return View(category);
             }
             catch
             {

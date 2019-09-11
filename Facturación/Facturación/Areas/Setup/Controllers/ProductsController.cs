@@ -1,39 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Facturación.Entities.Products;
+using MongoDB.Bson;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
 {
     public class ProductsController : Controller
     {
-        // GET: Setup/Products
+        readonly ProductRepository repository = new ProductRepository();
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                var list = repository.GetAll();
+                return View(list);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: Setup/Products/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Setup/Products/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Setup/Products/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Product product)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                repository.Insert(product);
                 return RedirectToAction("Index");
             }
             catch
@@ -42,42 +39,49 @@ namespace Facturación.Areas.Setup.Controllers
             }
         }
 
-        // GET: Setup/Products/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/Products/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id)
         {
             try
             {
-                // TODO: Add update logic here
+                var objectId = ObjectId.Parse(id);
+                var product = repository.Get(objectId);
+                return View(product);
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
+        [HttpPost]
+        public ActionResult Edit(string id, string name, string category, float price, string stock, string tax)
+        {
+            try
+            {
+                var objectId = ObjectId.Parse(id);
+                var doc = new BsonDocument
+                {
+                    { "name", name },
+                    { "category", category },
+                    { "price", price },
+                    { "stock", stock },
+                    { "tax", tax }
+                };
+                repository.Update(objectId, doc);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return null;
             }
         }
 
-        // GET: Setup/Products/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Setup/Products/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var objectId = ObjectId.Parse(id);
+                repository.Delete(objectId);
                 return RedirectToAction("Index");
             }
             catch

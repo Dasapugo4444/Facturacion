@@ -1,4 +1,5 @@
-﻿using Facturación.Entities.Taxes;
+﻿using Facturación.Entities.ProductCategories;
+using Facturación.Entities.Taxes;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -11,7 +12,7 @@ namespace Facturación.Entities.Products
         [BsonElement("Name")]
         public string Name { get; set; }
         [BsonElement("Category")]
-        public string Category { get; set; }
+        public Category Category { get; set; }
         [BsonElement("Price")]
         public float Price { get; set; }
         [BsonElement("Stock")]
