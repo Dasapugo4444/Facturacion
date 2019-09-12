@@ -1,8 +1,65 @@
-﻿@model Facturación.Entities.Products.Product
+﻿@model IEnumerable<Facturación.Entities.Products.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Productos";
 }
 
-<h2>Index</h2>
+<h1 class="h3 mb-2 text-gray-800">Consultar productos</h1>
+<p class="mb-4">Aquí puedes ver los productos disponibles.</p>
 
+<div class="card border-primary shadow mb-4">
+    <div class="card-header py-3">
+        <div class="h4 font-weight-bold text-primary">
+            Productos
+            <a href="/Setup/Products/Create" style="width:100px" class="float-right text-white btn btn-primary">Crear</a>
+        </div>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Impuesto</th>
+                        <th style="width:110px"></th>
+                        <th style="width:110px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="@item.Id">
+                            <td>@item.Code</td>
+                            <td>@item.Name</td>
+                            <td>@item.Category</td>
+                            <td>@item.Price</td>
+                            <td>@item.Stock</td>
+                            <td>@item.Tax</td>
+                            <td style="width:110px">
+                                <a href="~/Setup/Products/Edit/@item.Id" class="btn btn-primary btn-icon-split btn-sm">
+                                    <span class="icon text-white-50">
+                                        <i class="mt-1 fas fa-pencil-alt"></i>
+                                    </span>
+                                    <span class="text text-white">Editar</span>
+                                </a>
+                            </td>
+                            <td style="width:110px">
+                                <a href="~/Setup/Products/Delete/@item.Id" class="btn btn-danger btn-icon-split btn-sm">
+                                    <span class="icon text-white-50">
+                                        <i class="mt-1 fas fa-eraser"></i>
+                                    </span>
+                                    <span class="text text-white">Eliminar</span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -17,7 +17,7 @@ namespace Facturación.Entities.ProductCategories
         {
             client = new MongoClient();
             database = client.GetDatabase("facturacion");
-            collection = database.GetCollection<Category>("Categories");
+            collection = database.GetCollection<Category>("categories");
         }
 
         public void Insert(Category Category)

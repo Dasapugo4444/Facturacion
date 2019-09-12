@@ -1,5 +1,8 @@
-﻿using Facturación.Entities.Products;
+﻿using Facturación.Entities.ProductCategories;
+using Facturación.Entities.Products;
+using Facturación.Entities.Taxes;
 using MongoDB.Bson;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Facturación.Areas.Setup.Controllers
@@ -7,6 +10,8 @@ namespace Facturación.Areas.Setup.Controllers
     public class ProductsController : Controller
     {
         readonly ProductRepository repository = new ProductRepository();
+        readonly CategoryRepository categoriesRepository = new CategoryRepository();
+        readonly TaxRepository taxRepository = new TaxRepository();
         public ActionResult Index()
         {
             try
@@ -22,6 +27,24 @@ namespace Facturación.Areas.Setup.Controllers
 
         public ActionResult Create()
         {
+            // Crea dropdown para categorías
+            var categories = categoriesRepository.GetAll();
+            List<SelectListItem> categoriesList = new List<SelectListItem>();
+            foreach (var c in categories)
+            {
+                categoriesList.Add(new SelectListItem { Value = c.Code, Text = c.Name });
+            }
+            ViewBag.Category = new SelectList(categoriesList, "Value", "Text");
+
+            // Crea dropdown para impuestos
+            var taxes = taxRepository.GetAll();
+            List<SelectListItem> taxesList = new List<SelectListItem>();
+            foreach (var t in taxes)
+            {
+                taxesList.Add(new SelectListItem { Value = t.Code, Text = t.Name });
+            }
+            ViewBag.Tax = new SelectList(taxesList, "Value", "Text");
+
             return View();
         }
 

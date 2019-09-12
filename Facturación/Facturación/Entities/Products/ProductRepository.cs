@@ -9,9 +9,9 @@ namespace Facturación.Entities.Products
 {
     public class ProductRepository
     {
-        private IMongoClient client;
-        private IMongoDatabase database;
-        private IMongoCollection<Product> collection;
+        private readonly IMongoClient client;
+        private readonly IMongoDatabase database;
+        private readonly IMongoCollection<Product> collection;
 
         public ProductRepository()
         {
@@ -40,7 +40,7 @@ namespace Facturación.Entities.Products
 
         public void Delete(ObjectId id)
         {
-            collection.FindOneAndDelete(Builders<Product>.Filter.Eq("_id", id);
+            collection.FindOneAndDelete(Builders<Product>.Filter.Eq("_id", id));
         }
         public List<Product> GetAll()
         {

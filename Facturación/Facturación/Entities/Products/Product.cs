@@ -9,15 +9,17 @@ namespace Facturación.Entities.Products
     {
         [BsonId]
         public ObjectId Id { get; set; }
+        [BsonElement("Code")]
+        public string Code { get; set; }
         [BsonElement("Name")]
         public string Name { get; set; }
         [BsonElement("Category")]
-        public Category Category { get; set; }
+        public string Category { get; set; }
         [BsonElement("Price")]
         public float Price { get; set; }
         [BsonElement("Stock")]
         public int Stock { get; set; }
         [BsonElement("Tax")]
-        public Tax Tax { get; set; }
+        public string Tax { get; set; }
     }
 }
