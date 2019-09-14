@@ -2,6 +2,7 @@
 using Facturación.Entities.Products;
 using Facturación.Entities.Taxes;
 using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -66,8 +67,26 @@ namespace Facturación.Areas.Setup.Controllers
         {
             try
             {
+
                 var objectId = ObjectId.Parse(id);
                 var product = repository.Get(objectId);
+                // Crea dropdown para categorías
+                var categories = categoriesRepository.GetAll();
+                List<SelectListItem> categoriesList = new List<SelectListItem>();
+                foreach (var c in categories)
+                {
+                    categoriesList.Add(new SelectListItem { Value = c.Code, Text = c.Name });
+                }
+                ViewBag.Category = new SelectList(categoriesList, "Value", "Text", product.Category);
+
+                // Crea dropdown para impuestos
+                var taxes = taxRepository.GetAll();
+                List<SelectListItem> taxesList = new List<SelectListItem>();
+                foreach (var t in taxes)
+                {
+                    taxesList.Add(new SelectListItem { Value = t.Code, Text = t.Name });
+                }
+                ViewBag.Tax = new SelectList(taxesList, "Value", "Text", product.Tax);
                 return View(product);
             }
             catch
@@ -77,23 +96,24 @@ namespace Facturación.Areas.Setup.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(string id, string name, string category, float price, string stock, string tax)
+        public ActionResult Edit(string id, Product product)
         {
             try
             {
                 var objectId = ObjectId.Parse(id);
                 var doc = new BsonDocument
                 {
-                    { "name", name },
-                    { "category", category },
-                    { "price", price },
-                    { "stock", stock },
-                    { "tax", tax }
+                    { "code", product.Code },
+                    { "name", product.Name },
+                    { "category", product.Category },
+                    { "price", product.Price },
+                    { "stock", product.Stock },
+                    { "tax", product.Tax }
                 };
                 repository.Update(objectId, doc);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return null;
             }

@@ -22,7 +22,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Tipo de persona</label>
-                        <input class="form-control" name="PersonType" id="PersonType" value="@Model.PersonType" required />
+                        @Html.DropDownList("PersonType", null, "Selecciona un tipo de persona", new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -40,7 +40,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Tipo de identificación</label>
-                        <input class="form-control" name="IdentificationType" id="IdentificationType" value="@Model.IdentificationType" required />
+                        @Html.DropDownList("DocumentType", null, "Selecciona un tipo de persona", new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -52,7 +52,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Teléfono</label>
-                        <input class="form-control" name="Phone" id="Phone" value="@Model.Phone" required />
+                        <input type="number" class="form-control" name="Phone" id="Phone" value="@Model.Phone" required />
                     </div>
                 </div>
             </div>

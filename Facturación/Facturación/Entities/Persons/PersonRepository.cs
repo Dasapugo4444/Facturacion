@@ -30,7 +30,7 @@ namespace Facturación.Entities.Persons
                 .Set("PersonType", doc.GetValue("personType"))
                 .Set("FirstName", doc.GetValue("firstName"))
                 .Set("SurName", doc.GetValue("surName"))
-                .Set("IdentificationType", doc.GetValue("identificationType"))
+                .Set("DocumentType", doc.GetValue("identificationType"))
                 .Set("IdentificationNumber", doc.GetValue("identificationNumber"))
                 .Set("Phone", doc.GetValue("phone"));
             collection.FindOneAndUpdate(filter, item);

@@ -20,7 +20,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Tipo de persona</label>
-                        <input class="form-control" name="PersonType" id="PersonType" required />
+                        @Html.DropDownList("PersonType", null, "Selecciona un tipo de persona", new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -38,8 +38,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Tipo de identificación</label>
-                        @*<input class="form-control" name="IdentificationType" id="IdentificationType" required />*@
-                        @*@Html.DropDownListFor(dt => dt.Id, ViewBag.documentTypesList as SelectList, new { @class = "form-control"})*@
+                        @Html.DropDownList("DocumentType", null, "Selecciona un tipo de documento" , new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="col-sm-6">

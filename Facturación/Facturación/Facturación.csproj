@@ -185,7 +185,6 @@
     <Compile Include="Entities\Invoices\InvoiceRepository.cs" />
     <Compile Include="Entities\PaymentTypes\PaymentType.cs" />
     <Compile Include="Entities\PaymentTypes\PaymentTypeRepository.cs" />
-    <Compile Include="Entities\Persons\DocumentTyperepository.cs" />
     <Compile Include="Entities\Persons\Person.cs" />
     <Compile Include="Entities\Persons\PersonRepository.cs" />
     <Compile Include="Entities\PersonTypes\PersonType.cs" />

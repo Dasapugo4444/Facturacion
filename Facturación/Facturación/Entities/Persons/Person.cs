@@ -14,8 +14,8 @@ namespace Facturación.Entities.Persons
         public string FirstName { get; set; }
         [BsonElement("SurName")]
         public string SurName { get; set; }
-        [BsonElement("IdentificationType")]
-        public DocumentType IdentificationType { get; set; }
+        [BsonElement("DocumentType")]
+        public string DocumentType { get; set; }
         [BsonElement("IdentificationNumber")]
         public string IdentificationNumber { get; set; }
         [BsonElement("Phone")]

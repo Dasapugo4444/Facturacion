@@ -29,12 +29,13 @@ namespace Facturación.Entities.Products
         {
             var filter = Builders<Product>.Filter.Eq("_id", id);
             var item = Builders<Product>.Update
+                .Set("Code", doc.GetValue("code"))
                 .Set("Name", doc.GetValue("name"))
                 .Set("Category", doc.GetValue("category"))
                 .Set("Price", doc.GetValue("price"))
                 .Set("Stock", doc.GetValue("stock"))
                 .Set("Price", doc.GetValue("price"))
-                .Set("Stock", doc.GetValue("stock"));
+                .Set("Tax", doc.GetValue("tax"));
             collection.FindOneAndUpdate(filter, item);
         }
 
