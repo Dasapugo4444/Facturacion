@@ -167,6 +167,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Invoice\Controllers\InvoicesController.cs" />
+    <Compile Include="Areas\Invoice\InvoiceAreaRegistration.cs" />
     <Compile Include="Areas\Setup\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Setup\Controllers\DocumentTypesController.cs" />
     <Compile Include="Areas\Setup\Controllers\PaymentTypesController.cs" />
@@ -174,7 +176,6 @@
     <Compile Include="Areas\Setup\Controllers\PersonTypesController.cs" />
     <Compile Include="Areas\Setup\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Setup\Controllers\TaxesController.cs" />
-    <Compile Include="Areas\Setup\Models\PersonTypeModel.cs" />
     <Compile Include="Areas\Setup\SetupAreaRegistration.cs" />
     <Compile Include="Connections\Repository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -1993,6 +1994,11 @@
     <Content Include="Areas\Setup\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Setup\Views\Categories\Create.cshtml" />
     <Content Include="Areas\Setup\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Invoice\Views\web.config" />
+    <Content Include="Areas\Invoice\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoices\Index.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoices\Create.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoices\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2006,6 +2012,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />

@@ -1,6 +1,8 @@
-﻿using MongoDB.Bson;
+﻿using Facturación.Entities.Products;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
+using System.Collections.Generic;
 
 namespace Facturación.Entities.Invoices
 {
@@ -8,23 +10,19 @@ namespace Facturación.Entities.Invoices
     {
         [BsonId]
         public ObjectId Id { get; set; }
-        [BsonElement("Place")]
-        public string Place { get; set; }
+        [BsonElement("Customer")]
+        public string Customer { get; set; }
+        [BsonElement("OrderNumber")]
+        public int OrderNumber { get; set; }
+        [BsonElement("PaymentType")]
+        public string PaymentType { get; set; }
         [BsonElement("Date")]
-        public DateTime Date { get; set; }
-        [BsonElement("Number")]
-        public int Number { get; set; }
-        [BsonElement("Emmiter")]
-        public Persons.Person Emmiter { get; set; }
-        [BsonElement("Receiver")]
-        public Persons.Person Receiver { get; set; }
-        [BsonElement("Product")]
-        public Products.Product Product { get; set; }
-        [BsonElement("Quantity")]
-        public int Quantity { get; set; }
+        public string Date { get; set; }
+        [BsonElement("Seller")]
+        public string Seller { get; set; }
+        [BsonElement("Products")]
+        public List<Product> Products { get; set; }
         [BsonElement("TotalPrice")]
         public float TotalPrice { get; set; }
-        [BsonElement("Tax")]
-        public Taxes.Tax Tax { get; set; }
     }
 }
