@@ -55,15 +55,15 @@ namespace Facturación.Areas.Setup.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(string id, string code, string name)
+        public ActionResult Edit(string id, PersonType personType)
         {
             try
             {
                 var objectId = ObjectId.Parse(id);
                 var doc = new BsonDocument
                 {
-                    { "code", code },
-                    { "name", name }
+                    { "code", personType.Code },
+                    { "name", personType.Name }
                 };
                 repository.Update(objectId, doc);
                 return RedirectToAction("Index");

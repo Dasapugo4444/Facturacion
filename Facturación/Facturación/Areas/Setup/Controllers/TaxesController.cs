@@ -48,16 +48,16 @@ namespace Facturación.Areas.Setup.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(string id, string code, string name, float percentage)
+        public ActionResult Edit(string id, Tax tax)
         {
             try
             {
                 var objectId = ObjectId.Parse(id);
                 var doc = new BsonDocument
                 {
-                    { "code", code },
-                    { "name", name },
-                    { "percentage", percentage }
+                    { "code", tax.Code },
+                    { "name", tax.Name },
+                    { "percentage", tax.Percentage }
                 };
                 repository.Update(objectId, doc);
                 return RedirectToAction("Index");

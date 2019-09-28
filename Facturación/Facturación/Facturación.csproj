@@ -167,8 +167,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Invoice\Controllers\InvoicesController.cs" />
-    <Compile Include="Areas\Invoice\InvoiceAreaRegistration.cs" />
+    <Compile Include="Areas\Invoicing\Controllers\InvoicesController.cs" />
+    <Compile Include="Areas\Invoicing\InvoicingAreaRegistration.cs" />
     <Compile Include="Areas\Setup\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Setup\Controllers\DocumentTypesController.cs" />
     <Compile Include="Areas\Setup\Controllers\PaymentTypesController.cs" />
@@ -1994,11 +1994,12 @@
     <Content Include="Areas\Setup\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Setup\Views\Categories\Create.cshtml" />
     <Content Include="Areas\Setup\Views\Categories\Edit.cshtml" />
-    <Content Include="Areas\Invoice\Views\web.config" />
-    <Content Include="Areas\Invoice\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Invoice\Views\Invoices\Index.cshtml" />
-    <Content Include="Areas\Invoice\Views\Invoices\Create.cshtml" />
-    <Content Include="Areas\Invoice\Views\Invoices\Edit.cshtml" />
+    <Content Include="Areas\Invoicing\Views\web.config" />
+    <Content Include="Areas\Invoicing\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Invoicing\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Invoicing\Views\Invoices\Index.cshtml" />
+    <Content Include="Areas\Invoicing\Views\Invoices\Create.cshtml" />
+    <Content Include="Areas\Invoicing\Views\Invoices\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2049,6 +2050,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Invoicing\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

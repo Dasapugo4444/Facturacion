@@ -33,6 +33,7 @@ namespace Facturación.Entities.PaymentTypes
         {
             collection.FindOneAndDelete(Builders<PaymentType>.Filter.Eq("_id", id));
         }
+
         public List<PaymentType> GetAll()
         {
             return collection.Find(new BsonDocument()).ToList();

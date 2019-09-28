@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Facturación.Areas.Invoice
+namespace Facturación.Areas.Invoicing
 {
-    public class InvoiceAreaRegistration : AreaRegistration 
+    public class InvoicingAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Invoice";
+                return "Invoicing";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Invoice_default",
-                "Invoice/{controller}/{action}/{id}",
+                "Invoicing_default",
+                "Invoicing/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

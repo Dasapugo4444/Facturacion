@@ -49,5 +49,16 @@ namespace Facturación.Entities.Persons
         {
             return collection.Find<Person>(p => p.Id == id).FirstOrDefault();
         }
+
+        public List<Person> GetSellers()
+        {
+            var filter = Builders<Person>.Filter.Eq("PersonType", "V");
+            return collection.Find(filter).ToList();
+        }
+        public List<Person> GetCustomers()
+        {
+            var filter = Builders<Person>.Filter.Eq("PersonType", "C");
+            return collection.Find(filter).ToList();
+        }
     }
 }

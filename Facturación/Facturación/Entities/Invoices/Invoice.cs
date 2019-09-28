@@ -21,8 +21,14 @@ namespace Facturación.Entities.Invoices
         [BsonElement("Seller")]
         public string Seller { get; set; }
         [BsonElement("Products")]
-        public List<Product> Products { get; set; }
+        public BsonDocument Products { get; set; }
+        [BsonElement("Product")]
+        public Product Product { get; set; }
         [BsonElement("TotalPrice")]
         public float TotalPrice { get; set; }
+        [BsonElement("Description")]
+        public string Description { get; set; }
+        [BsonElement("Quantity")]
+        public int Quantity { get; set; }
     }
 }
